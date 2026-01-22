@@ -28,10 +28,12 @@ To strictly adhere to ethical guidelines and protect user privacy, all datasets 
 The data is distributed as individual **Parquet files (`.parquet`)**. Each file corresponds to a single anonymized user. This structure allows for efficient processing of individual timelines without loading the entire dataset into memory.
 
 ### File Organization
-IND23
-├── user_a1b2c3d4.parquet
-├── user_e5f6g7h8.parquet
-└── ...
+```
+AltX/
+├──IND23/
+    ├── user_a1b2c3d4.parquet
+    ├── user_e5f6g7h8.parquet
+```
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
