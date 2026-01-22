@@ -25,13 +25,70 @@ The data was collected using **IO-X**, a transparent detection system that seeds
 
 To strictly adhere to ethical guidelines and protect user privacy, all datasets in this repository are **fully anonymized**. No personally identifiable information (PII) such as usernames, display names, or raw image files is included.
 
-The data is provided in **CSV format** with the following schema:
+The data is distributed as individual **Parquet files (`.parquet`)**. Each file corresponds to a single anonymized user. This structure allows for efficient processing of individual timelines without loading the entire dataset into memory.
+
+### File Organization
+IND23
+├── user_a1b2c3d4.parquet
+├── user_e5f6g7h8.parquet
+└── ...
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | `userid` | String (Hash) | An anonymized unique identifier for the X/Twitter account. |
 | `tweetid` | String (Hash) | An anonymized unique identifier for the specific tweet. |
 | `tweet_text` | String | The text content of the post. This is provided to allow for text duplication analysis and natural language processing tasks. |
+
+## 📖 How to Read the Data
+
+You can read individual user timelines using standard libraries in Python or R.
+
+### Python
+
+Use the `pandas` library (requires `pyarrow` or `fastparquet`).
+```python
+import pandas as pd
+import glob
+import os
+
+# Path to the directory where you extracted the ZIP file
+data_path = "data/extracted_users/"
+
+# 1. Read a single user's file
+user_file = os.path.join(data_path, "user_example_id.parquet")
+df_user = pd.read_parquet(user_file)
+print(df_user.head())
+
+# 2. Iterate through all users
+all_files = glob.glob(os.path.join(data_path, "*.parquet"))
+
+for file in all_files:
+    df = pd.read_parquet(file)
+    # Perform analysis on this user's timeline...
+```
+
+### R
+
+Use the `arrow` package.
+```r
+library(arrow)
+
+# Path to the directory where you extracted the ZIP file
+data_path <- "data/extracted_users"
+
+# 1. Read a single user's file
+user_file <- file.path(data_path, "user_example_id.parquet")
+df_user <- read_parquet(user_file)
+head(df_user)
+
+# 2. Iterate through all users
+files <- list.files(data_path, pattern = "\\.parquet$", full.names = TRUE)
+
+for (file in files) {
+  df <- read_parquet(file)
+  # Perform analysis...
+}
+```
 
 > **Note on Images:** While the research paper analyzes image duplication, raw image files are excluded from this public release to prevent potential privacy leaks. The duplication campaigns described in the paper were verified using embeddings generated from these posts.
 
@@ -62,3 +119,16 @@ If you use any of the datasets in your research, please cite the following paper
   location  = {Dubai, United Arab Emirates},
   series    = {WWW '26}
 }
+```
+
+## 📄 License
+
+This dataset is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+**You are free to:**
+- **Share** — copy and redistribute the material in any medium or format.
+
+**Under the following terms:**
+- **Attribution:** You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- **NonCommercial:** You may not use the material for commercial purposes.
+- **NoDerivatives:** If you remix, transform, or build upon the material, you may not distribute the modified material.
