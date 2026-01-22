@@ -53,7 +53,7 @@ The data collection process (Mon) followed a strict protocol:
 If you use this dataset in your research, please cite the following paper:
 
 ```bibtex
-@inproceedings{shafin2026iox,
+@inproceedings{SSC26,
   author    = {Shafin, Ashfaq Ali and Siddique, Md Nahid and Carbunar, Bogdan},
   title     = {IO-X: Detecting and Attributing Content-Duplicating Influence Operations on X (Twitter)},
   year      = {2026},
