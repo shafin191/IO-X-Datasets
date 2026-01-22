@@ -39,6 +39,57 @@ IND23
 | `tweetid` | String (Hash) | An anonymized unique identifier for the specific tweet. |
 | `tweet_text` | String | The text content of the post. This is provided to allow for text duplication analysis and natural language processing tasks. |
 
+## 📖 How to Read the Data
+
+You can read individual user timelines using standard libraries in Python or R.
+
+### Python
+
+Use the `pandas` library (requires `pyarrow` or `fastparquet`).
+```python
+import pandas as pd
+import glob
+import os
+
+# Path to the directory where you extracted the ZIP file
+data_path = "data/extracted_users/"
+
+# 1. Read a single user's file
+user_file = os.path.join(data_path, "user_example_id.parquet")
+df_user = pd.read_parquet(user_file)
+print(df_user.head())
+
+# 2. Iterate through all users
+all_files = glob.glob(os.path.join(data_path, "*.parquet"))
+
+for file in all_files:
+    df = pd.read_parquet(file)
+    # Perform analysis on this user's timeline...
+```
+
+### R
+
+Use the `arrow` package.
+```r
+library(arrow)
+
+# Path to the directory where you extracted the ZIP file
+data_path <- "data/extracted_users"
+
+# 1. Read a single user's file
+user_file <- file.path(data_path, "user_example_id.parquet")
+df_user <- read_parquet(user_file)
+head(df_user)
+
+# 2. Iterate through all users
+files <- list.files(data_path, pattern = "\\.parquet$", full.names = TRUE)
+
+for (file in files) {
+  df <- read_parquet(file)
+  # Perform analysis...
+}
+```
+
 > **Note on Images:** While the research paper analyzes image duplication, raw image files are excluded from this public release to prevent potential privacy leaks. The duplication campaigns described in the paper were verified using embeddings generated from these posts.
 
 ## 🔬 Collection Methodology
