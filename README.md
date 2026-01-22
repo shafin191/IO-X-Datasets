@@ -42,15 +42,10 @@ The data collection process (Mon) followed a strict protocol:
 2.  **Identification:** We searched X/Twitter for public posts duplicating the text or images of these verified false claims.
 3.  **Monitoring:** Accounts identified as duplicators were monitored over the election periods to capture their timelines and duplication behavior.
 
-## ⚖️ Ethical Considerations
-
-* **Public Data Only:** All data was collected from publicly accessible posts on X (formerly Twitter).
-* **IRB Approval:** The research protocol and data collection were reviewed and declared exempt by the Institutional Review Board (IRB).
-* **Privacy:** All user identifiers have been hashed to ensure anonymity. We have excluded private content and metadata that could be used to re-identify individuals.
 
 ## 📜 Citation
 
-If you use this dataset in your research, please cite the following paper:
+If you use any of the datasets in your research, please cite the following paper:
 
 ```bibtex
 @inproceedings{SSC26,
