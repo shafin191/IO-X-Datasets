@@ -25,7 +25,13 @@ The data was collected using **IO-X**, a transparent detection system that seeds
 
 To strictly adhere to ethical guidelines and protect user privacy, all datasets in this repository are **fully anonymized**. No personally identifiable information (PII) such as usernames, display names, or raw image files is included.
 
-The data is provided in **CSV format** with the following schema:
+The data is distributed as individual **Parquet files (`.parquet`)**. Each file corresponds to a single anonymized user. This structure allows for efficient processing of individual timelines without loading the entire dataset into memory.
+
+### File Organization
+IND23
+├── user_a1b2c3d4.parquet
+├── user_e5f6g7h8.parquet
+└── ...
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
