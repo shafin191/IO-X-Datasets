@@ -53,7 +53,7 @@ import pandas as pd
 import glob
 import os
 
-# Path to the directory where you extracted the ZIP file
+# Path to the directory
 data_path = "data/extracted_users/"
 
 # 1. Read a single user's file
@@ -75,7 +75,7 @@ Use the `arrow` package.
 ```r
 library(arrow)
 
-# Path to the directory where you extracted the ZIP file
+# Path to the directory
 data_path <- "data/extracted_users"
 
 # 1. Read a single user's file
