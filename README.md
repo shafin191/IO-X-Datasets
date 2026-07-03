@@ -7,6 +7,11 @@ This repository contains the anonymized datasets used in the research paper **"I
 
 These datasets were generated to analyze **Content-Duplicating Influence Operations (CD-IOs)**—coordinated campaigns where groups of accounts disseminate identical or near-identical content to promote shared narratives.
 
+
+## 📌 IO-X Poster
+
+<img src="https://github.com/shafin191/IOX/blob/main/Poster/IOX-Poster.png" alt="IO-X Poster" width="850">
+
 ## 📂 Dataset Overview
 
 The data was collected using **IO-X**, a transparent detection system that seeds monitoring from fact-checking reports to identify accounts spreading verified false information. The collection focuses on two major geopolitical contexts: the **2024 U.S. Elections** and the **2024 Indian Elections**.
